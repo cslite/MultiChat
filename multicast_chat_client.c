@@ -17,7 +17,7 @@
 #define false 0
 #define MAX_LEN 2047
 
-const int port = 6003;
+const int port = 6000;
 const char baseIP[] = "238.101";
 
 //int port;
@@ -25,8 +25,8 @@ char grup[20];
 
 struct course{
     int comcode;
-    char subject[6];
-    char code[6];
+    //char subject[6];
+    char code[12];
     char *cname;
 };
 
@@ -34,6 +34,7 @@ typedef struct course course;
 
 course *courseList;
 int numCourses;
+
 void ps(char *str){
     if(str)
         fprintf(stderr,"%s\n",str);
@@ -101,14 +102,14 @@ int parseCourseInfo(char *buf,course *cptr){
         return false;
     buf[i] = 0;
     sscanf(buf,"%d",&(cptr->comcode));
-    buf = buf+i+1;
-    i = 0;
-    while(buf[i] != '\0' && buf[i] != delim)
-        i++;
-    if(!buf[i])
-        return false;
-    buf[i] = 0;
-    strcpy((cptr->subject),buf);
+//     buf = buf+i+1;
+//     i = 0;
+//     while(buf[i] != '\0' && buf[i] != delim)
+//         i++;
+//     if(!buf[i])
+//         return false;
+//     buf[i] = 0;
+//     strcpy((cptr->subject),buf);
     buf = buf+i+1;
     i = 0;
     while(buf[i] != '\0' && buf[i] != delim)
@@ -130,8 +131,8 @@ int parseCourseInfo(char *buf,course *cptr){
 /*
  * Format will be
  * 2
- * 1094,CS,F211,DATA STRUCTURES & ALGORITHMS
- * 1092,CS,F213,OBJECT ORIENTED PROGRAMMING
+ * 1094,CS F211,DATA STRUCTURES & ALGORITHMS
+ * 1092,CS F213,OBJECT ORIENTED PROGRAMMING
  */
 
 int readCourseData(char *cpath){
@@ -160,17 +161,14 @@ int readCourseData(char *cpath){
  */
 
 int getCourseIdx(char *courseCode){
-    char **cc = strSplit(courseCode,' ');
     int i;
     //linear search (can be done by binary search if number of courses are binary)
     for(i=0;i<numCourses;i++){
         course *c = &(courseList[i]);
-        if(equals(cc[0],c->subject) && equals(cc[1],c->code)){
-            free(*cc);
+        if(equals(courseCode,c->code)){
             return i;
         }
     }
-    free(*cc);
     return -1;
 }
 
@@ -267,12 +265,12 @@ int sendMessage(int grpIdx, int sockfd){
     addr.sin_addr.s_addr = inet_addr(destIp);
     strcpy(buf,"\n\n- - - - - - - - - - - - - -\n");
     strcat(buf,"MESSAGE FROM ");
-    strcat(buf,c->subject);
-    strcat(buf,"-");
+//     strcat(buf,c->subject);
+//     strcat(buf,"-");
     strcat(buf,c->code);
     strcat(buf,"\n- - - - - - - - - - - - - -\n");
     int skiplen = strlen(buf);
-    printf("Type the message to be sent to %s-%s\n",c->subject,c->code);
+    printf("Type the message to be sent to %s\n",c->code);
     if(fgets(buf+skiplen,(MAX_LEN-skiplen-30),stdin) == NULL){
         printf("[ERROR]: Unable to read stdin\n");
         free(destIp);
@@ -318,7 +316,7 @@ void displayCourseMenu(int rcl[],int n){
     int i;
     for(i=0;i<n;i++){
         course *c = &(courseList[rcl[i]]);
-        printf("%d. %s %s - %s\n",i,c->subject,c->code,c->cname);
+        printf("%d. %s - %s\n",i,c->code,c->cname);
     }
     printf(": ");
 }
@@ -380,7 +378,7 @@ void startApp(){
                         rcli--;
                     }
                     else{
-                        printf("Successfully added %s %s - %s\n",c->subject,c->code,c->cname);
+                        printf("Successfully added %s - %s\n",c->code,c->cname);
                     }
                 }
             }
@@ -399,7 +397,7 @@ void startApp(){
                             rcli--;
                             course *c = &(courseList[rcl[ch]]);
                             rcl[ch] = rcl[rcli];
-                            printf("Successfully left the course %s %s - %s\n",c->subject,c->code,c->cname);
+                            printf("Successfully left the course %s - %s\n",c->code,c->cname);
                         }
                     }
                 }
