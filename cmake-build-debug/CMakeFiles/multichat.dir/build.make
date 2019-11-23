@@ -57,27 +57,27 @@ include CMakeFiles/multichat.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/multichat.dir/flags.make
 
-CMakeFiles/multichat.dir/main.c.o: CMakeFiles/multichat.dir/flags.make
-CMakeFiles/multichat.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tussank/multichat/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/multichat.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/multichat.dir/main.c.o   -c /home/tussank/multichat/main.c
+CMakeFiles/multichat.dir/multicast_chat_client.c.o: CMakeFiles/multichat.dir/flags.make
+CMakeFiles/multichat.dir/multicast_chat_client.c.o: ../multicast_chat_client.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tussank/multichat/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/multichat.dir/multicast_chat_client.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/multichat.dir/multicast_chat_client.c.o   -c /home/tussank/multichat/multicast_chat_client.c
 
-CMakeFiles/multichat.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/multichat.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tussank/multichat/main.c > CMakeFiles/multichat.dir/main.c.i
+CMakeFiles/multichat.dir/multicast_chat_client.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/multichat.dir/multicast_chat_client.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/tussank/multichat/multicast_chat_client.c > CMakeFiles/multichat.dir/multicast_chat_client.c.i
 
-CMakeFiles/multichat.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/multichat.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tussank/multichat/main.c -o CMakeFiles/multichat.dir/main.c.s
+CMakeFiles/multichat.dir/multicast_chat_client.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/multichat.dir/multicast_chat_client.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/tussank/multichat/multicast_chat_client.c -o CMakeFiles/multichat.dir/multicast_chat_client.c.s
 
 # Object files for target multichat
 multichat_OBJECTS = \
-"CMakeFiles/multichat.dir/main.c.o"
+"CMakeFiles/multichat.dir/multicast_chat_client.c.o"
 
 # External object files for target multichat
 multichat_EXTERNAL_OBJECTS =
 
-multichat: CMakeFiles/multichat.dir/main.c.o
+multichat: CMakeFiles/multichat.dir/multicast_chat_client.c.o
 multichat: CMakeFiles/multichat.dir/build.make
 multichat: CMakeFiles/multichat.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tussank/multichat/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable multichat"

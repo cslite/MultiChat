@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/multichat.dir/main.c.o"
+  "CMakeFiles/multichat.dir/multicast_chat_client.c.o"
   "multichat"
   "multichat.pdb"
 )

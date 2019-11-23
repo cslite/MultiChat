@@ -123,32 +123,32 @@ multichat/fast:
 	$(MAKE) -f CMakeFiles/multichat.dir/build.make CMakeFiles/multichat.dir/build
 .PHONY : multichat/fast
 
-main.o: main.c.o
+multicast_chat_client.o: multicast_chat_client.c.o
 
-.PHONY : main.o
+.PHONY : multicast_chat_client.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) -f CMakeFiles/multichat.dir/build.make CMakeFiles/multichat.dir/main.c.o
-.PHONY : main.c.o
+multicast_chat_client.c.o:
+	$(MAKE) -f CMakeFiles/multichat.dir/build.make CMakeFiles/multichat.dir/multicast_chat_client.c.o
+.PHONY : multicast_chat_client.c.o
 
-main.i: main.c.i
+multicast_chat_client.i: multicast_chat_client.c.i
 
-.PHONY : main.i
+.PHONY : multicast_chat_client.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles/multichat.dir/build.make CMakeFiles/multichat.dir/main.c.i
-.PHONY : main.c.i
+multicast_chat_client.c.i:
+	$(MAKE) -f CMakeFiles/multichat.dir/build.make CMakeFiles/multichat.dir/multicast_chat_client.c.i
+.PHONY : multicast_chat_client.c.i
 
-main.s: main.c.s
+multicast_chat_client.s: multicast_chat_client.c.s
 
-.PHONY : main.s
+.PHONY : multicast_chat_client.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles/multichat.dir/build.make CMakeFiles/multichat.dir/main.c.s
-.PHONY : main.c.s
+multicast_chat_client.c.s:
+	$(MAKE) -f CMakeFiles/multichat.dir/build.make CMakeFiles/multichat.dir/multicast_chat_client.c.s
+.PHONY : multicast_chat_client.c.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... multichat"
 	@echo "... edit_cache"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... multicast_chat_client.o"
+	@echo "... multicast_chat_client.i"
+	@echo "... multicast_chat_client.s"
 .PHONY : help
 
 

@@ -78,7 +78,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/tussank/multichat/main.c">
+		<Unit filename="/home/tussank/multichat/multicast_chat_client.c">
 			<Option target="multichat"/>
 		</Unit>
 		<Unit filename="/home/tussank/multichat/CMakeLists.txt">

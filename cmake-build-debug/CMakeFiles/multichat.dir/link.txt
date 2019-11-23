@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/multichat.dir/main.c.o  -o multichat 
+/usr/bin/cc -g   CMakeFiles/multichat.dir/multicast_chat_client.c.o  -o multichat 

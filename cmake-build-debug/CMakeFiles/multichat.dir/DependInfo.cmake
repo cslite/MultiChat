@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/tussank/multichat/main.c" "/home/tussank/multichat/cmake-build-debug/CMakeFiles/multichat.dir/main.c.o"
+  "/home/tussank/multichat/multicast_chat_client.c" "/home/tussank/multichat/cmake-build-debug/CMakeFiles/multichat.dir/multicast_chat_client.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
