@@ -26,4 +26,68 @@ For example, if the course-data file named `course-info.txt` is stored in the cu
 ```bash
 $ ./mchat course-info.txt 1
 ```
+## Format for the course-data file
+
+This file contains a list of all courses that can be currently taken along with their ComCode (a 4 digit unique code). This file helps the client to generate group IP address based on the course code. The course-data file should have the following format,
+
+```console
+<k = Number of Courses>
+<C1 COMCODE>,<C1 COURSE CODE>,<C1 COURSE TITLE>
+<C2 COMCODE>,<C2 COURSE CODE>,<C2 COURSE TITLE>
+..
+..
+..
+<Ck COMCODE>,<Ck COURSE CODE>,<Ck COURSE TITLE>
+```
+
+For example,
+```
+6
+1092,CS F213,OBJECT ORIENTED PROG
+1090,CS F214,LOGIC IN COMPUTER SC
+1093,CS F215,DIGITAL DESIGN
+1091,CS F222,DISCR STRUC FOR COMP SCI
+1316,CS F301,PRINCIPLES OF PROGG LANG
+2266,CS F320,FOUNDATIONS OF DATA SCIENCE
+```
+(A sample file containing this information for all courses offered in First Semester 2019-20 is included.)
+
+## Commands
+
+The program gives these options to a user,
+```
+1. Send Message
+2. Join new course
+3. Leave a course
+4. Exit
+```
+Enter the corresponding option number to select an option.
+
+## Working
+
+### Generation of multicast group IP Address
+All the group IP Addresses are generated based on the ComCode of a course. All IPs have a format of `238.101.1xx.1xx`.
+
+The procedure used to generate an IP address from a course ComCode is,
+```C
+char *genIpFromComCode(int comCode){
+    char *multicastIP = allocString(16);
+    sprintf(multicastIP,"%s.1%d.1%d",baseIP,comCode/100,comCode%100);
+    return multicastIP;
+}
+```
+For example, if a course has ComCode equal to `1092`, then the corresponding group IP will be `238.101.110.192`.
+
+### Generation of a Message
+A message entered by a user is padded with some extra characters to improve the message readability. An example message is shown below,
+```
+- - - - - - - - - - - - - - - - - - - -
+MESSAGE FROM IS F462
+- - - - - - - - - - - - - - - - - - - -
+This is a test message.
+- - - - - - - - - - - - - - - - - - - -
+```
+
+### Receiving Messages
+A separate child process is run to accept messages from the subscribed groups and print them to console. This process is killed when `4. Exit` option is selected or `SIGINT` signal is given by the user.
 
