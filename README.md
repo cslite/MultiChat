@@ -63,6 +63,14 @@ The program gives these options to a user,
 ```
 Enter the corresponding option number to select an option.
 
+## Default settings
+These default settings are defined in the first few lines of the code and can be changed from there.
+
+- Maximum message length is set to `2047 bytes`.
+- Port for the Multicast socket is set to `6000`.
+- BaseIP for multicast groups is set to `238.101`.
+- Loopback of Messages is `disabled`.
+
 ## Working
 
 ### Generation of multicast group IP Address
