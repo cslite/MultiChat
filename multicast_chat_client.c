@@ -14,6 +14,7 @@
 const int port = 6000;
 const char baseIP[] = "238.101";
 int allow_loopback = 0;
+int cpid;   //variable to store child process id
 
 struct course{
     int comcode;
@@ -49,6 +50,12 @@ int equals(char *s1, char *s2){
         return false;
     else
         return (strcmp(s1,s2) == 0);
+}
+
+void sighandlr(int signo){
+    kill(cpid,SIGKILL);
+    printf("Exiting...\n");
+    exit(0);
 }
 
 int parseCourseInfo(char *buf,course *cptr){
@@ -284,11 +291,11 @@ void startApp(){
     memset(rcl,-1,sizeof rcl);
     if(sockfd == -1)
         exit(-1);
-    int cpid;
     if((cpid=fork()) == 0){
         getMessage(sockfd);
     }
     else{
+        signal(SIGINT,sighandlr);
         for(;;){
             displayMenu();
             int ch;
@@ -377,6 +384,7 @@ int main(int argc, char *argv[]) {
     }
     if(!readCourseData(argv[1]))
         return -1;
+
     startApp();
     return 0;
 }

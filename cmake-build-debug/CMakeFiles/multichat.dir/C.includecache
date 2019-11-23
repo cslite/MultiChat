@@ -13,12 +13,6 @@ stdlib.h
 -
 string.h
 -
-ctype.h
--
-sys/stat.h
--
-time.h
--
 unistd.h
 -
 sys/wait.h
@@ -26,9 +20,5 @@ sys/wait.h
 arpa/inet.h
 -
 netinet/in.h
--
-fcntl.h
--
-sys/sendfile.h
 -
 
