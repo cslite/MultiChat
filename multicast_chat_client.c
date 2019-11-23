@@ -1,15 +1,10 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<ctype.h>
-#include<sys/stat.h>
-#include <time.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <arpa/inet.h>
 #include<netinet/in.h>
-#include<fcntl.h>
-#include<sys/sendfile.h>
 
 #define SA      struct sockaddr
 #define true 1
@@ -22,7 +17,6 @@ int allow_loopback = 0;
 
 struct course{
     int comcode;
-    //char subject[6];
     char code[12];
     char *cname;
 };
@@ -38,6 +32,7 @@ void ps(char *str){
     else
         fprintf(stderr,"null\n");
 }
+
 char *allocString(int size){
     char *cstr = (char *)(calloc(size+1,sizeof(char)));
     return cstr;
@@ -54,19 +49,6 @@ int equals(char *s1, char *s2){
         return false;
     else
         return (strcmp(s1,s2) == 0);
-}
-
-/*
-Count the number of occurrences of tk in str
-*/
-int numTk(char *str,char tk){
-    int i;
-    int len = strlen(str);
-    int cnt = 0;
-    for(i=0;i<len;i++)
-        if(str[i] == tk)
-            cnt++;
-    return cnt;
 }
 
 int parseCourseInfo(char *buf,course *cptr){
@@ -213,7 +195,7 @@ int createSocket(){
         ps("[ERROR]: Unable to bind.");
         return -1;
     }
-    
+
     if(setsockopt(sock, IPPROTO_IP, IP_MULTICAST_LOOP, (char *) &allow_loopback,sizeof(allow_loopback)) == -1){
         perror("[ERROR]: Unable to disable loopback");
     }

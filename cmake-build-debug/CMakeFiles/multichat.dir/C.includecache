@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/tussank/multichat/main.c
+/home/tussank/multichat/multicast_chat_client.c
 stdio.h
 -
 stdlib.h
